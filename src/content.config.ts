@@ -16,4 +16,19 @@ const blog = defineCollection({
 		}),
 });
 
-export const collections = { blog };
+const scoutDiaries = defineCollection({
+	// Load Markdown and MDX files in the `src/content/scout-diaries/` directory.
+	loader: glob({ base: './src/content/scout-diaries', pattern: '**/*.{md,mdx}' }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.coerce.date(),
+			updatedDate: z.coerce.date().optional(),
+			heroImage: image().optional(),
+			/** Short tag summarising the AI territory covered, e.g. "LLMs", "Agents" */
+			territory: z.string().optional(),
+		}),
+});
+
+export const collections = { blog, scoutDiaries };
