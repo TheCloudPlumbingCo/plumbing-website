@@ -1,4 +1,4 @@
-# Astro Starter Kit: Blog
+# The Cloud Plumbing Co
 
 ```sh
 npm create astro@latest -- --template blog
